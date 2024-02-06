@@ -1,0 +1,38 @@
+.flexBox{
+    display: flex;
+    flex-direction: column;
+    background-color:var(--color-grey-4);
+    padding: 0.625rem 0.75rem;
+    gap:10px;
+    
+    div{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+        gap:10px;
+        div{
+            display: flex;
+            flex-direction: row;
+        }
+    }
+    
+
+}
+.ulBox{
+    background-color: var(--color-grey-3);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding:16px 9px;
+   
+   align-items: center;
+   height: 358px;
+   height: min-content;
+}
+@media (min-width:870px){
+    .ulBox{
+        padding:23px 22px;
+    }
+}

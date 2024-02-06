@@ -1,0 +1,58 @@
+.title{
+    font-family: var(--font-family);
+    line-height: 1.4;
+    &.one{
+        font-size: 1.125rem;
+        font-weight:700 ;
+        color:var(--color-grey-0);
+    }
+    &.two{
+        font-size: 1rem;
+        font-weight:400 ;
+        color:#FFF;
+    }
+    &.three{
+        font-size: clamp(0.9024rem,2vw,1.125rem);
+        font-weight: 700;
+        color:var(--color-grey-0);
+    }
+    &.four{
+        font-size: 0.75rem;
+        font-weight: 400;
+        color:var(--color-grey-1);
+    }
+    &.five{
+        font-size: clamp(0.6016rem,2vw,0.75rem);
+        font-weight: 600;
+        color:var(--color-grey-1);
+    }
+    &.modal{
+        font-size: clamp(0.7019rem,2vw,0.875rem);
+        font-weight: 700;
+        color:var(--color-grey-0);
+    }
+    
+}
+
+.paragraph{
+    font-family: var(--font-family);
+    line-height: 1.4;
+    font-weight: 400;
+    color:var(--color-grey-0);
+    &.label{
+        font-size: clamp(0.6108rem,2vw,0.7614rem);
+    &.negative{
+        color: var(--negative);
+    }
+    }
+    &.placeholder{
+        font-size: clamp(0.8117rem,2vw,1.0152rem);
+    }
+}
+.paragraph2{
+    font-family: var(--font-family);
+    line-height: 1.4;
+    font-weight: 400;
+    color:var(--color-grey-1);
+    font-size: clamp(0.5994rem,2vw,0.75rem);
+}
