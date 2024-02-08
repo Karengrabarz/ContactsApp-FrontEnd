@@ -38,6 +38,7 @@
     font-family: var(--font-family);
     line-height: 1.4;
     font-weight: 400;
+    margin-top: 5px;
     color:var(--color-grey-0);
     &.label{
         font-size: clamp(0.6108rem,2vw,0.7614rem);

@@ -64,10 +64,9 @@ export const ClientProvider = ({ children }) => {
       setClient(data)
       setIsOpenUpdateClientModal(false);
     }catch(error){
-      if (error.response?.data.error === "Email already exists."){
-        toast.error("Email já cadastrado");
+        toast.error(error.response?.data.error);
 
-      }
+      
     }
   }
   const deleteClient = async () => {
@@ -81,9 +80,10 @@ export const ClientProvider = ({ children }) => {
       });
       toast.success("Cliente deletado com sucesso.");
       setTimeout(() => {
-        navigate("/");
+        setClient(null);
         localStorage.removeItem('@token')
-      }, 2000);
+        navigate("/");
+      }, 1000);
     } catch (error) {}
   };
   const clientLogin = async (formData, setLoading, reset) => {
@@ -105,7 +105,7 @@ export const ClientProvider = ({ children }) => {
         navigate('/dashboard');
       }, 2000);
     } catch (error) {
-      toast.error("Email e/ou senha incorreta");
+      toast.error(error.response?.data.error);
     
     } finally {
       setLoading(false);
@@ -122,8 +122,8 @@ export const ClientProvider = ({ children }) => {
         navigate("/");
       }, 2000);
     } catch (error) {
-      if (error.response?.data.message === "Email already exists")
-      toast.error("Email já cadastrado");
+      console.log(error.response.data.error)
+      toast.error(error.response?.data.error);
     } finally {
       setLoading(false);
     }

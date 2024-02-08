@@ -6,16 +6,20 @@ import { MdOutlineDelete } from "react-icons/md";
 import {ContactList} from '../../components/ContactList'
 import { FaRegEdit } from "react-icons/fa";
 import { UpdateClientModal } from "../../components/modal/clientModal";
+
 export const DashboardPage = () => {
   const { client, clientLogout, setIsOpenUpdateClientModal, isOpenUpdateClientModal, deleteClient} = useContext(ClientContext);
   
   return (
     <div>
-      <header className={`container ${styles.header}`}>
-        <img src={Logo} alt="Logo ContactsApp" />
-        <button className="btn sm" onClick={() => clientLogout()}>
-          Sair
-        </button>
+      <header className={styles.header}>
+        <div className="container">
+          <img src={Logo} alt="Logo ContactsApp" />
+          <button className="btn sm" onClick={() => clientLogout()}>
+            Sair
+          </button>
+
+        </div>
       </header>
       <main className={styles.main}>
         <div className={styles.teste}>

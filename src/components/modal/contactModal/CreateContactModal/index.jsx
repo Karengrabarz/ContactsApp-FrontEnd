@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import btnClose from "../../../../assets/X.png";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styles from "./style.module.scss";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -10,6 +10,19 @@ import { contactCreateSchema } from "../contactSchema";
 
 
 export const CreateContactModal = () => {
+  const modalRef = useRef(null)
+  useEffect(()=>{
+    const handleOutclick = (event) =>{
+      if(!modalRef.current?.contains(event.target)){
+        setIsOpenCreateContactModal(false)
+      }
+    }
+    window.addEventListener('mousedown',handleOutclick)
+    return()=>{
+      window.removeEventListener('mousedown',handleOutclick)
+    }
+  },[])
+  
   const {
     register,
     handleSubmit,
@@ -29,7 +42,7 @@ export const CreateContactModal = () => {
   return (
     <div role="dialog">
       <div className={styles.modalOverlay}>
-        <div className={styles.modalBox}>
+        <div ref={modalRef} className={styles.modalBox}>
           <div>
             <h3 className="title modal">Criar contato</h3>
             <button onClick={() => setIsOpenCreateContactModal(false)}>

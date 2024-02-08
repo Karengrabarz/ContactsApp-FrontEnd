@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import btnClose from '../../../assets/X.png'
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styles from "./style.module.scss";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { clientUpdateSchema } from "./UpdateClientModalSchema";
@@ -9,6 +9,20 @@ import { Input } from "../../Input";
 import { InputPassword } from "../../InputPassword";
 
 export const UpdateClientModal = () => {
+  const { clientUpdate,client,setIsOpenUpdateClientModal } = useContext(ClientContext);
+  const modalRef = useRef(null)
+  useEffect(()=>{
+    const handleOutclick = (event) =>{
+      if(!modalRef.current?.contains(event.target)){
+        setIsOpenUpdateClientModal(false)
+      }
+    }
+    window.addEventListener('mousedown',handleOutclick)
+    return()=>{
+      window.removeEventListener('mousedown',handleOutclick)
+    }
+  },[])
+
   const {
     register,
     handleSubmit,
@@ -18,9 +32,11 @@ export const UpdateClientModal = () => {
     resolver: zodResolver(clientUpdateSchema),
   });
 
-  const { clientUpdate,client, setIsOpenUpdateClientModal } = useContext(ClientContext);
 
   const submit = (formData) => {
+    if(formData.email == client.email){
+      delete formData.email
+    }
     clientUpdate(formData);
 
   };
@@ -28,7 +44,7 @@ export const UpdateClientModal = () => {
   return (
     <div role="dialog">
       <div className={styles.modalOverlay}>
-        <div className={styles.modalBox}>
+        <div ref={modalRef} className={styles.modalBox}>
           <div>
             <h3 className="title modal">Editar dados</h3>
             <button onClick={() => setIsOpenUpdateClientModal(false)}>
