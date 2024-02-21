@@ -105,6 +105,7 @@ export const ClientProvider = ({ children }) => {
         navigate('/dashboard');
       }, 2000);
     } catch (error) {
+
       toast.error(error.response?.data.error);
     
     } finally {
