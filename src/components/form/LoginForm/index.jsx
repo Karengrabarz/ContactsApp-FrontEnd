@@ -28,7 +28,7 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submit)} className={styles.formBox}>
-      <h3 className="title">Organize todos os seus contatos com facilidade, direto na tela do seu dispositivo</h3>
+      <h3 className="title">Tenha sua lista de contatos na palma da sua mão</h3>
       <div>
         <Input
           label="Email"
