@@ -7,7 +7,9 @@
     align-items: stretch;
     gap:20px;
     h3{
-        align-self: center;
+        font-size:clamp(0.75rem,2vh,0.95rem) ;
+        font-weight: 600;
+        color:var(--color-grey-1);
     }
     input{
         margin-top: 9.6px;
