@@ -84,7 +84,9 @@ export const ClientProvider = ({ children }) => {
         localStorage.removeItem('@token')
         navigate("/");
       }, 1000);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response?.data.message);
+    }
   };
   const clientLogin = async (formData, setLoading, reset) => {
     try {

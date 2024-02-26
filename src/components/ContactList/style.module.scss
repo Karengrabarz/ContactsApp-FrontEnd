@@ -1,5 +1,6 @@
 .flexBox{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     background-color:var(--color-grey-4);
     padding: 1.625rem 0.75rem;

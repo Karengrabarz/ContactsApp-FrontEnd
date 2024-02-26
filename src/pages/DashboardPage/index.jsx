@@ -9,7 +9,7 @@ import { UpdateClientModal } from "../../components/modal/clientModal";
 
 export const DashboardPage = () => {
   const { client, clientLogout, setIsOpenUpdateClientModal, isOpenUpdateClientModal, deleteClient} = useContext(ClientContext);
-  
+
   return (
     <div>
       <header className={styles.header}>

@@ -46,15 +46,10 @@ export const ContactProvider = ({ children }) => {
       setIsOpenCreateContactModal(false);
       setContactList([...contactList, data]);
     } catch (error) {
-
-      if (
-        error.response?.data.message ===
-        "Client already have this contact created, you can only update it"
-      ) {
-        toast.error("Contato já cadastrado");
-      }
+      toast.error(error.response?.data.message);
     }
   };
+
 
   const deleteContact = async (deletingId) => {
     try {
@@ -67,7 +62,9 @@ export const ContactProvider = ({ children }) => {
       });
       const newContactList = contactList.filter((contact) => contact.id !== deletingId);
       setContactList(newContactList);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response?.data.message);
+    }
   };
 
   const updateContact = async (formData) => {
@@ -94,7 +91,9 @@ export const ContactProvider = ({ children }) => {
       setContactList(newContactlist);
       setUpdateContactState(null);
       setIsOpenUpdateModal(false);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response?.data.message);
+    }
   };
 
   return (
